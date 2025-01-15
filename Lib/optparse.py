@@ -74,7 +74,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 import sys, os
-import textwrap
 from gettext import gettext as _, ngettext
 
 
@@ -254,6 +253,7 @@ class HelpFormatter:
         """
         text_width = max(self.width - self.current_indent, 11)
         indent = " "*self.current_indent
+        import textwrap
         return textwrap.fill(text,
                              text_width,
                              initial_indent=indent,
@@ -309,6 +309,7 @@ class HelpFormatter:
         result.append(opts)
         if option.help:
             help_text = self.expand_default(option)
+            import textwrap
             help_lines = textwrap.wrap(help_text, self.help_width)
             result.append("%*s%s\n" % (indent_first, "", help_lines[0]))
             result.extend(["%*s%s\n" % (self.help_position, "", line)
